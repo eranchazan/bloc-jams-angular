@@ -1,9 +1,9 @@
 (function() {
- 	function AlbumCtrl(){
+ 	function AlbumCtrl() {
  		this.albumData.push(angular.copy(albumPicasso));
  	} 
 
  	angular
- 	.module('albumViewSongItem')
+ 	.module('blocJams')
  	.controller('AlbumCtrl', AlbumCtrl);
 })();
