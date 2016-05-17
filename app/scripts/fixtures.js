@@ -1,4 +1,4 @@
-ar albumPicasso = {
+var albumPicasso = {
      title: 'The Colors',
      artist: 'Pablo Picasso',
      label: 'Cubism',
@@ -33,9 +33,8 @@ var albumFurious7 = {
     artist: 'Snoop Dog',
     label: 'YoungThug',
     year: '2015',
-    albumArtUrl: 'assets/images/album_covers/03.png'
+    albumArtUrl: 'assets/images/album_covers/03.png',
     songs: [
-        {title: ,duration: }
         {title: 'Young E', '4:01' },
         { title: 'Grindin', duration: '3:00'},
         { title: 'Stompin', duration: '2:00' },
