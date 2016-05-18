@@ -42,6 +42,8 @@
                 retun AlbumCount
     };
      
+    return Fixtures;
+     
      }
  
      angular
