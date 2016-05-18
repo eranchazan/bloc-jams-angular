@@ -31,7 +31,13 @@
              { title: 'Wrong phone number', duration: '2:15' }
          ]
      };
+
+     Fixtures.getAlbum = function() {
+     	retun albumPicasso;
+     };
+     
          return Fixtures;
+     
      }
  
      angular
