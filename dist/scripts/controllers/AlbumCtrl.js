@@ -1,6 +1,5 @@
 (function() {
  	 function AlbumCtrl(Fixtures, SongPlayer) {
- 		this.albumData = albumPicasso
  	    this.albumData = Fixtures.getAlbum();
  	    this.songPlayer = SongPlayer;
  	} 
