@@ -1,15 +1,14 @@
 (function() {
-	function SongPlayer() {
+	function SongPlayer(Fixtures) {
 		/**
  		* @desc Create SongPlayer object
  		* @type {Object}
  		*/
 		var SongPlayer = {};
-		/**
- 		* @desc currentSong object audio file
- 		* @type {Object}
- 		*/
-		var currentSong= null;
+		/**/
+
+ 		var currentAlbum = Fixtures.getAlbum();
+		
 		/**
  		* @desc currentBuzzObject object audio file
  		* @type {Object}
@@ -51,18 +50,28 @@
 
     currentSong = song;
     };
+
+    var getSongIndex = function(song) {
+    return currentAlbum.songs.indexOf(song);
+ 	};
+    /**
+    * @desc currentSong object audio file
+ 		* @type {Object}
+ 		*/
+	SongPlayer.currentSong = null;
     /**
     	* @public function  
  		* @desc if currentSong object does not equal the currently playing song, set song to currently playing song. Else if currently playing song does equal the currently playing song and it is paused, then play it. 
  		* @type object
  		*/
 	SongPlayer.play = function(song) {
-		if(currentSong !== song) {
+		song = song || SongPlayer.currentSong;
+		if(SongPlayer.currentSong !== song) {
 		 setSong(song);
 		 playSong();
-			} else if (currentSong === song) {
+			} else if (SongPlayer.currentSong === song) {
 				if (currentBuzzObject.isPaused()) {
-						currentBuzzObject.play();
+						playSong(song);
 				}
 			}	
 		};
@@ -72,9 +81,24 @@
  		* @type 
  		*/
 		SongPlayer.pause = function(song) {
+			song = song || SongPlayer.currentSong;
 			currentBuzzObject.pause();
 			song.playing = false;
 		};
+
+		SongPlayer.previous = function() {
+     		var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+     		currentSongIndex--;
+ 			 
+ 			 if (currentSongIndex < 0) {
+         currentBuzzObject.stop();
+         SongPlayer.currentSong.playing = null;
+     		 } else {
+         var song = currentAlbum.songs[currentSongIndex];
+         setSong(song);
+         playSong(song);
+     }
+ 		};
 		/**
  		* @desc Returns the original SongPlayer object  
  		* @type
