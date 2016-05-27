@@ -13,14 +13,11 @@
                 currentSong.playing = null;
             };
  		
-            // SongPlayer.currentSong = song;
-
+           
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
 
-
-        // currentSong = song;
         
             });
  
@@ -48,16 +45,16 @@
 	SongPlayer.play = function(song) {
 		song = song || SongPlayer.currentSong;
 		if(SongPlayer.currentSong !== song) {
-		 setSong(song);
-		 currentBuzzObject.play();
-         song.playing = true;
-			} else if (SongPlayer.currentSong === song) {
-				if (currentBuzzObject.isPaused()) {
-				currentBuzzObject.play();
-                song.playing = true;
-				}
-			}	
-		};
+		    setSong(song);
+		    currentBuzzObject.play();
+            song.playing = true;
+		} else {
+			if (currentBuzzObject.isPaused()) {
+			currentBuzzObject.play();
+            song.playing = true;
+			}
+		}	
+	};
 		
 		SongPlayer.pause = function(song) {
 			song = song || SongPlayer.currentSong;
