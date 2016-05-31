@@ -17,8 +17,8 @@
          onChange: '&'
         },
          link: function(scope, element, attributes) {
-             scope.value = 0;
-             scope.max = 100;
+            scope.value = 0;
+            scope.max = 100;
  			
          	var seekBar = $(element);
 
@@ -68,12 +68,12 @@
             
             var notifyOnChange = function(newValue) {
                 if (typeof scope.onChange === 'function') {
-                scope.onChange({value: newValue});
+                    scope.onChange({value: newValue});
                 }
             };
           
-           }
-        };
+         }
+      };
 
     }
  
