@@ -22,8 +22,6 @@
          <div class="control-group currently-playing">
             <h2 class="song-name">
                  {{  album.songPlayer.currentSong.title }}
-                 <!-- record currentSong in SongPlayer -->
-                 <!-- playerBar.songPlayer.currentSong.artist -->
             </h2>
             <h2 class="artist-song-mobile"></h2>
             <h3 class="artist-name">
@@ -31,10 +29,8 @@
             </h3>
             <div class="seek-control">
                  <seek-bar value="{{ playerBar.songPlayer.currentTime }}" max="{{ playerBar.songPlayer.currentSong.duration }}" on-change="playerBar.songPlayer.setCurrentTime(value)"></seek-bar>
-                 <div class="current-time">{{ album.songPlayer.setCurrentTime }}</div>
-                 <div class="total-time">
-                        {{ album.songPlayer.currentSong.duration }}
-                 </div>
+                 <div class="current-time">{{ playerBar.songPlayer.currentTime | timecode }}</div>
+                  <div class="total-time">{{ playerBar.songPlayer.currentSong.duration | timecode }}</div>
             </div>
             <div class="control-group volume">
                 <span class="icon ion-volume-high"></span>
