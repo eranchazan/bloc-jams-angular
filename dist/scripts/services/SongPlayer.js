@@ -12,60 +12,39 @@
            	    currentBuzzObject.stop();
                 currentSong.playing = null;
             };
- 		
-           
+ 	 
+        
+//.play() method and any bloc info around that
+// Google why it's not working
             currentBuzzObject = new buzz.sound(song.audioUrl, {
                 formats: ['mp3'],
                 preload: true
             });
-
             currentBuzzObject.bind('timeupdate', function() {
                 $rootScope.$apply(function() {
-                 SongPlayer.currentTime = currentBuzzObject.getTime();
+                    SongPlayer.currentTime = currentBuzzObject.getTime();
                 });
             });
- 
-                                        // var playSong = function() {
-                                        // 	currentBuzzObject.play();
-                                        // 	song.playing = true;
-                                        // }; 
-
-                                        // var stopSong = function() {
-                                        // 	currentBuzzObject.stop();
-                                        // 	song.playing = null;
-                                        // };
-
-        SongPlayer.currentSong = song;
-    
     };
-
-  
-
-        var getSongIndex = function(song) {
-        return currentAlbum.songs.indexOf(song);
- 	    };
+      
    
 	    SongPlayer.currentSong = null; 
 
-        /**
-        * @desc Current playback time (in seconds) of currently playing song
-        * @type {Number}
-        */
         SongPlayer.currentTime = null;
    
-	SongPlayer.play = function(song) {
+	   SongPlayer.play = function(song) {
 		song = song || SongPlayer.currentSong;
-		if(SongPlayer.currentSong !== song) {
+		if (SongPlayer.currentSong !== song) {
 		    setSong(song);
 		    currentBuzzObject.play();
             song.playing = true;
 		} else {
 			if (currentBuzzObject.isPaused()) {
-			currentBuzzObject.play();
-            song.playing = true;
+			    currentBuzzObject.play();
+                song.playing = true;
 			}
-		}	
-	};
+		  }	
+	   };
 		
 		SongPlayer.pause = function(song) {
 			song = song || SongPlayer.currentSong;
@@ -102,24 +81,24 @@
                 song.playing = true;
                 }
  		};
-	    /**
-        * @function setCurrentTime
-        * @desc Set current time (in seconds) of currently playing song
-        * @param {Number} time
-        */
+
+        SongPlayer.volume = function(volume) {
+            var volume = currentBuzzObject.getVolume()
+        };
+
+
+        SongPlayer.setVolume = function(volume) {
+            if (currentBuzzObject) { 
+                currentBuzzObject.setVolume(volume)
+            }
+        };
+	    
         SongPlayer.setCurrentTime = function(time) {
             if (currentBuzzObject) {
             currentBuzzObject.setTime(time);
             }
         };
 
-        SongPlayer.volume = function(volume) {
-            var currentVolume = 
-        };
-
-        SongPlayer.setVolume = function(argument) {
-            
-        };
 
 	return SongPlayer;
 
@@ -132,6 +111,7 @@
 
 
 
-
+     
+        
 
 
