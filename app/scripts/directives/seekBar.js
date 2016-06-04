@@ -12,7 +12,6 @@
          templateUrl: '/templates/directives/seek_bar.html',
          replace: true,
          restrict: 'E',
-         scope: { },
          scope: {
          onChange: '&'
         },
@@ -59,23 +58,22 @@
                          notifyOnChange(scope.value);
          				});
      				});
- 
-     		    $document.bind('mouseup.thumb', function() {
-         		$document.unbind('mousemove.thumb');
-         		$document.unbind('mouseup.thumb');
-    		    });
- 			};
-            
-            var notifyOnChange = function(newValue) {
+
+                var notifyOnChange = function(newValue) {
                 if (typeof scope.onChange === 'function') {
                     scope.onChange({value: newValue});
                 }
             };
+     		 $document.bind('mouseup.thumb', function() {
+         		$document.unbind('mousemove.thumb');
+         		$document.unbind('mouseup.thumb');
+    		    });
+ 			};
           
          }
-      };
+     }
 
-    }
+  }
  
      angular
          .module('blocJams')
